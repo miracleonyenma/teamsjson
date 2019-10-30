@@ -18,5 +18,8 @@
     "teamsjson"
   ],
   "author": "Miracle Onyenma",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
 }
