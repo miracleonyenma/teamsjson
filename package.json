@@ -1,0 +1,22 @@
+{
+  "name": "teamsjson-master",
+  "version": "1.0.0",
+  "description": "json create read update and delete (CRUD) app",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https:github.com/miracleonyenma/teamsjson.git"
+  },
+  "keywords": [
+    "json",
+    "generator",
+    "crud",
+    "nodejs",
+    "teamsjson"
+  ],
+  "author": "Miracle Onyenma",
+  "license": "ISC"
+}
