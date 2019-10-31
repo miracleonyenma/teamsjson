@@ -1,0 +1,89 @@
+{
+    "teamName" : "Alphas",
+    "website" : "https://alphasteam.netlify.com",
+
+    "members" : [
+        {
+            "id": 1,
+            "name": "Miracle Onyenma",
+            "role": "Web Developer",
+            "company" : "Alphas",
+            "bio" : "I'm a Designer, developer, tech lover and code junkie",
+            "img" : "./img/IMG_20190108_163639edit.jpg",
+            "social" : [
+                "https://twitter.com/miracleio",
+                "https://github.com/miracleonyenma"
+            ],
+            "icons" : [
+                "fa fa-twitter",
+                "fa fa-github"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Primidac",
+            "role": "Cryptographer",
+            "company" : "Hiroutes Digital",
+            "bio" : "I'm a Designer, developer, tech lover and code junkie",
+            "img" : "",
+            "social" : [
+                "https://twitter.com/miracleio",
+                "https://github.com/miracleonyenma"
+            ],
+            "icons" : [
+                "fa fa-twitter",
+                "fa fa-github"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Koder King",
+            "role": "Software Developer",
+            "company" : "Alphas",
+            "bio" : "I'm a Designer, developer, tech lover and code junkie",
+            "img" : "",
+            "social" : [
+                "https://twitter.com/miracleio",
+                "https://github.com/miracleonyenma"
+            ],
+            "icons" : [
+                "fa fa-twitter",
+                "fa fa-github"
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Victory Tuduo",
+            "role": "Software Developer",
+            "company" : "Alphas",
+            "bio" : "I'm a Developer(full stack),love coding and stuffs like that ",
+            "img" : "./img/vic.jpg",
+            "social" : [
+                "https://facebook.com/Tuduo Victory",
+                "https://github.com/Victory-ET"
+            ],
+            "icons" : [
+                "fa fa-facebook",
+                "fa fa-github"
+            ]
+        },
+
+        {
+            "id": 5,
+            "name": "Emmanuel Uche",
+            "role": "Front-End developer and cyber-Security personnel",
+            "company" : "Alphas",
+            "bio" : "I'm a web-developer (front-end) and cyber-security person who loves coding and gets tired easily when coding",
+            "img" : "",
+            "social" : [
+
+                "https://facebook.com/Uc Emma",
+                "https://github.com/Uc-Hub"
+            ],
+            "icons" : [
+                "fa fa-facebook",
+                "fa fa-github"
+            ]
+        }
+    ]
+}
