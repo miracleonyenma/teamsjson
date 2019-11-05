@@ -1,6 +1,7 @@
 :root{
     --background: #212531;
     --background-content: #282b36;
+    --background-submit: #3b5ac9;
     --border-content: rgba(255, 255, 255, 0.171);
     --text: #eee;
 }
@@ -37,6 +38,7 @@ form{
     width: 100%;
     position: relative;
     padding: 2em;
+    border-bottom: 2px solid var(--border-content);
 }
 
 .form-group{
@@ -186,5 +188,42 @@ form{
             grid-row: 1;
             grid-column: 2;
         }
+    }
+}
+
+.submit-cont{
+    width: 100%;
+    padding: 2em 0 0 0;
+
+    input{
+        background: var(--background-submit);
+        border: 1px solid var(--border-content);
+        color: var(--text);
+        width: 100%;
+        height: 100%;
+        outline: none;
+        padding: 0.65em 0.25em;
+        border-radius: 6px;
+
+        &:hover{
+            background: #4769e4;
+        }
+
+    }
+}
+
+.output-cont{
+    width: 100%;
+    padding: 1em;
+
+    pre{
+        background: var(--border-content);
+        border: 1px solid var(--border-content);
+        color: var(--text);
+        width: 100%;
+        height: 100%;
+        outline: none;
+        padding: 0.65em 0.25em;
+        border-radius: 6px
     }
 }

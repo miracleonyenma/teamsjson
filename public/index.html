@@ -10,7 +10,7 @@
 <body>
     <div class="main">
         <div class="form-cont">
-            <form action="">
+            <form action="#" method="POST">
 
                 <div class="form-group">
                     <input class="form-control" type="text" name="Name" id="name" required>
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="social icon-cont">
-                        <select name="social-icon" class="form-control" required>
+                        <select name="icons" class="form-control" required>
                             <option value="none" selected="selected"></option>
                             <option value="fa fa-twitter">Twitter</option>
                             <option value="fa fa-github">Github</option>
@@ -58,7 +58,7 @@
                     </div>
                     
                     <div class="social icon-cont">
-                        <select name="social-icon" class="form-control" required>
+                        <select name="icons" class="form-control" required>
                             <option value="none" selected="selected"></option>
                             <option value="fa fa-twitter">Twitter</option>
                             <option value="fa fa-github">Github</option>
@@ -68,8 +68,12 @@
                     </div>
 
                 </div>
-
+                <div class="submit-cont"><input type="submit" value="submit"></div>
             </form>
+
+            <div class="output-cont">
+                <pre id="output">Partial</pre>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
