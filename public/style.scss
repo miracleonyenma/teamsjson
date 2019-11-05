@@ -1,7 +1,7 @@
 :root{
     --background: #212531;
-    --background-content: #2f3341;
-    --border-content: rgba(255, 255, 255, 0.192);
+    --background-content: #282b36;
+    --border-content: rgba(255, 255, 255, 0.171);
     --text: #eee;
 }
 
@@ -157,6 +157,9 @@ form{
 
             &:focus{
                 color: var(--background);
+            }
+            &:valid{
+                color: var(--text)
             }
         }
     
