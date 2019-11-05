@@ -55,7 +55,6 @@ form {
   cursor: text;
   pointer-events: none;
   border-radius: 6px;
-  background: var(--border-content);
   border: 1px solid var(--border-content);
   color: var(--text);
 }
@@ -84,7 +83,7 @@ form {
 .form-group input:hover + label span, .form-group input:focus + label span, .form-group input:valid + label span, .form-group select:hover + label span, .form-group select:focus + label span, .form-group select:valid + label span, .form-group textarea:hover + label span, .form-group textarea:focus + label span, .form-group textarea:valid + label span {
   -webkit-transform: translate(5%, -125%);
           transform: translate(5%, -125%);
-  opacity: 0.78;
+  opacity: 0.68;
 }
 
 .form-group textarea:hover + label span, .form-group textarea:focus + label span, .form-group textarea:valid + label span {
