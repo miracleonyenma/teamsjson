@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TeamsForm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="form-cont">
+            <form action="">
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="Name" id="name" required>
+                    <label for="name"><span>Name</span></label>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="role" id="role" required>
+                    <label for="role"><span>Role</span></label>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="company" id="company" required>
+                    <label for="company"><span>Company</span></label>
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-control" name="bio" id="bio" required></textarea>
+                    <label for="bio"><span>Bio</span></label>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="image" id="image" class="form-control" required>
+                    <label for="image"><span>Image URL</span></label>
+                </div>
+
+                <div class="form-group">
+                    <div class="social-cont">
+                        <input type="text" name="social" id="social1" required>
+                        <label for="social"><span>Social-1</span></label>
+                    </div>
+                    <div class="social-cont">
+                        <input type="text" name="social" id="social2" required>
+                        <label for="social"><span>Social-2</span></label>
+                    </div>
+
+                    <div class="social-icon-cont">
+                        <select name="social-icon" class="form-control" required>
+                            <option value="none" selected="selected"></option>
+                            <option value="fa fa-twitter">Twitter</option>
+                            <option value="fa fa-github">Github</option>
+                            <option value="fa fa-facebook">Facebook</option>
+                        </select>
+                        <label for="social-icon"><span>Social-icon-1</span></label>
+                    </div>
+                    
+                    <div class="social-icon-cont">
+                        <select name="social-icon" class="form-control" required>
+                            <option value="none" selected="selected"></option>
+                            <option value="fa fa-twitter">Twitter</option>
+                            <option value="fa fa-github">Github</option>
+                            <option value="fa fa-facebook">Facebook</option>
+                        </select>
+                        <label for="social-icon"><span>Social-icon-2</span></label>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

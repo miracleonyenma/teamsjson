@@ -1,0 +1,80 @@
+:root {
+  --background: #212531;
+  --background-content: #2f3341;
+  --border-content: rgba(255, 255, 255, 0.192);
+  --text: #eee;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-transition: 0.32s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.32s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+}
+
+.main {
+  width: 100%;
+  position: relative;
+}
+
+.form-cont {
+  width: 310px;
+  position: relative;
+  margin: 10% auto;
+  background: var(--background-content);
+  border-radius: 12px;
+  border: 2px solid var(--border-content);
+}
+
+form {
+  width: 100%;
+  position: relative;
+  padding: 2em;
+}
+
+.form-group {
+  margin: 1em auto;
+  position: relative;
+  height: 50px;
+  width: 88%;
+}
+
+.form-group label {
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  display: block;
+}
+
+.form-group label span {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  -webkit-transform: translate(5%, -50%);
+          transform: translate(5%, -50%);
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  background: var(--border-content);
+  border: 1px solid var(--border-content);
+  color: var(--text);
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  padding: 20px 0 0 20px;
+}
+
+.form-group input:hover + label span, .form-group input:active + label span, .form-group input:valid + label span, .form-group select:hover + label span, .form-group select:active + label span, .form-group select:valid + label span, .form-group textarea:hover + label span, .form-group textarea:active + label span, .form-group textarea:valid + label span {
+  -webkit-transform: translate(5%, -125%);
+          transform: translate(5%, -125%);
+  opacity: 0.78;
+}
+/*# sourceMappingURL=style.css.map */

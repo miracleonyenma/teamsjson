@@ -51,7 +51,6 @@ const userRoutes = (app, fs) => {
             writeFile(JSON.stringify(data, null, 2), () => {
                 res.status(200).send("new user added");
             });
-            console.log(data.members[5]);
 
         },
             true);
