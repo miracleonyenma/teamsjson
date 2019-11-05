@@ -157,9 +157,9 @@ form{
             &:focus{
                 color: var(--background);
             }
-            &:valid{
-                color: var(--text)
-            }
+            // &:valid{
+            //     color: var(--text)
+            // }
         }
     
 
