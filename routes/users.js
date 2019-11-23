@@ -5,6 +5,7 @@ const userRoutes = (app, fs) => {
 
 
 
+
   // //read
   // app.get('/users', (req, res) => {
   //   fs.readFile(dataPath, 'utf8', (err, data) => {

@@ -32,23 +32,23 @@
                     <label for="bio"><span>Bio</span></label>
                 </div>
 
-                <div class="form-group">
-                    <input type="text" name="image" id="image" class="form-control" required>
-                    <label for="image"><span>Image URL</span></label>
+                <div class="image form-group">
+                    <label for="image"><span id="fakeBtn">Choose file<span>No file chosen</span></span></label>
+                    <input type="file" name="imageFile" id="imageFile" hidden>
                 </div>
 
                 <div class="social-form-group">
                     <div class="social cont">
-                        <input type="text" name="social" id="social1" required>
+                        <input type="text" name="social" id="social1" class="social-control" required>
                         <label for="social"><span>Social Link</span></label>
                     </div>
                     <div class="social cont">
-                        <input type="text" name="social" id="social2" required>
+                        <input type="text" name="social" id="social2" class="social-control" required>
                         <label for="social"><span>Social Link</span></label>
                     </div>
 
                     <div class="social icon-cont">
-                        <select name="icons" class="form-control" required>
+                        <select name="icons" id="icons1" class="social-control" required>
                             <option value="none" selected="selected"></option>
                             <option value="fa fa-twitter">Twitter</option>
                             <option value="fa fa-github">Github</option>
@@ -58,7 +58,7 @@
                     </div>
                     
                     <div class="social icon-cont">
-                        <select name="icons" class="form-control" required>
+                        <select name="icons" id="icons2" class="social-control" required>
                             <option value="none" selected="selected"></option>
                             <option value="fa fa-twitter">Twitter</option>
                             <option value="fa fa-github">Github</option>

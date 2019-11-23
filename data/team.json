@@ -78,7 +78,6 @@
       ]
     },
     {
-      "id": 1,
       "name": "Miracle Onyenma",
       "role": "Web Developer",
       "company": "Alphas",
@@ -93,6 +92,20 @@
         "fa fa-github"
       ]
     },
-    {}
+    {
+      "name": "Miracle",
+      "role": "wsefwe",
+      "company": "wfwefwf",
+      "bio": "wefwef",
+      "img": "chromeDevtools.PNG",
+      "social": [
+        "fwef",
+        "wefw"
+      ],
+      "icons": [
+        "fa fa-github",
+        "fa fa-github"
+      ]
+    }
   ]
 }

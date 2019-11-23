@@ -2,6 +2,12 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
+
+//[cors] Cross-origin resource sharing
+const cors = require('cors');
+
+const fileUpload = require('express-fileupload');
 
 // create an instance of express to serve our end points
 const app = express();
@@ -16,6 +22,9 @@ const fs = require('fs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use(express.static('public'));
+app.use(cors());
+app.use(fileUpload());
 
 // this is where we'll handle our various routes from
 
