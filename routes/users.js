@@ -67,6 +67,17 @@ const userRoutes = (app, fs) => {
       res.send(JSON.parse(data));
     });
   });
+
+  //update
+  app.put('/users/:id', (req, res) => {
+    readFile(data => {
+
+      //add the user
+      console.log(req.params["id"]);
+    });
+  });
+
 };
+
 
 module.exports = userRoutes;

@@ -2,6 +2,7 @@
   --background: #212531;
   --background-content: #282b36;
   --background-submit: #3b5ac9;
+  --background-submit-variant: #4c68ca;
   --border-content: rgba(255, 255, 255, 0.171);
   --text: #eee;
 }
@@ -26,10 +27,13 @@ body {
   position: relative;
 }
 
-.form-cont {
+.cont {
+  margin: 6% auto;
+}
+
+.form.cont {
   width: 310px;
   position: relative;
-  margin: 10% auto;
   background: var(--background-content);
   border-radius: 12px;
   border: 2px solid var(--border-content);
@@ -134,7 +138,7 @@ form {
 }
 
 .image.form-group label span:hover {
-  background: #637cd4;
+  background: var(--background-submit-variant);
 }
 
 .image.form-group label span:active {
@@ -249,11 +253,12 @@ form {
   height: 100%;
   outline: none;
   padding: 0.65em 0.25em;
+  cursor: pointer;
   border-radius: 6px;
 }
 
 .submit-cont input:hover {
-  background: #4769e4;
+  background: var(--background-submit-variant);
 }
 
 .output-cont {
@@ -270,5 +275,84 @@ form {
   outline: none;
   padding: 0.65em 0.25em;
   border-radius: 6px;
+}
+
+.users.cont {
+  position: relative;
+  width: 310px;
+  margin: 6% auto;
+  background: var(--background-content);
+  border-radius: 12px;
+  border: 2px solid var(--border-content);
+}
+
+.users.cont div#users {
+  padding: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.users.cont div#users ul li {
+  list-style: none;
+  background: var(--background-content);
+  border: 2px solid var(--border-content);
+  border-bottom-style: none;
+  cursor: pointer;
+}
+
+.users.cont div#users ul li:nth-of-type(1), .users.cont div#users ul li:nth-of-type(1) a button {
+  border-radius: 6px 6px 0 0;
+}
+
+.users.cont div#users ul li:nth-last-of-type(1), .users.cont div#users ul li:nth-last-of-type(1) a button {
+  border-radius: 0 0 6px 6px;
+  border-bottom-style: solid;
+}
+
+.users.cont div#users ul li button {
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  color: var(--text);
+  padding: 0.88em;
+  border: 0px solid #ffffff00;
+  cursor: pointer;
+}
+
+.users.cont div#users ul li button:hover, .users.cont div#users ul li button:active, .users.cont div#users ul li button:focus {
+  background: var(--background-content);
+}
+
+.users.cont button#refresh {
+  margin: auto;
+  display: block;
+  margin: 1em auto;
+  background: var(--background-submit);
+  padding: 0.25em 0.5em;
+  border: none;
+  border-radius: 36px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.users.cont button#refresh:hover, .users.cont button#refresh:active, .users.cont button#refresh:focus {
+  background: var(--background-submit-variant);
+}
+
+@media screen and (min-width: 680px) {
+  .cont {
+    margin: 6% 10%;
+    float: left;
+  }
+  .form.cont {
+    width: 40%;
+  }
+  .users.cont {
+    width: 30%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

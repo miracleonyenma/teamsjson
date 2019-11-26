@@ -78,11 +78,26 @@
       ]
     },
     {
-      "name": "Miracle Onyenma",
-      "role": "Web Developer",
+      "name": "Simon Jay",
+      "role": "Project Manager",
       "company": "Alphas",
+      "bio": "Hi, I manage stuff",
+      "img": "icon512.png",
+      "social": [
+        "twitter.com",
+        "facebook.com"
+      ],
+      "icons": [
+        "fa fa-github",
+        "fa fa-facebook"
+      ]
+    },
+    {
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
       "bio": "I'm a Designer, developer, tech lover and code junkie",
-      "img": "./img/IMG_20190108_163639edit.jpg",
+      "img": "icon512.png",
       "social": [
         "https://twitter.com/miracleio",
         "https://github.com/miracleonyenma"
@@ -93,17 +108,167 @@
       ]
     },
     {
-      "name": "Miracle",
-      "role": "wsefwe",
-      "company": "wfwefwf",
-      "bio": "wefwef",
-      "img": "chromeDevtools.PNG",
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
+      "bio": "I'm a Designer, developer, tech lover and code junkie",
+      "img": "300x300.png",
       "social": [
-        "fwef",
-        "wefw"
+        "https://twitter.com/miracleio",
+        "https://github.com/miracleonyenma"
       ],
       "icons": [
-        "fa fa-github",
+        "fa fa-twitter",
+        "fa fa-github"
+      ]
+    },
+    {
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
+      "bio": "I'm a Designer, developer, tech lover and code junkie",
+      "img": "300x300.png",
+      "social": [
+        "https://twitter.com/miracleio",
+        "https://github.com/miracleonyenma"
+      ],
+      "icons": [
+        "fa fa-twitter",
+        "fa fa-github"
+      ]
+    },
+    {
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
+      "bio": "I'm a Designer, developer, tech lover and code junkie",
+      "img": "150x150.png",
+      "social": [
+        "https://twitter.com/miracleio",
+        "https://github.com/miracleonyenma"
+      ],
+      "icons": [
+        "fa fa-twitter",
+        "fa fa-github"
+      ]
+    },
+    {
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
+      "bio": "I'm a Designer, developer, tech lover and code junkie",
+      "img": "150x150.png",
+      "social": [
+        "https://twitter.com/miracleio",
+        "https://github.com/miracleonyenma"
+      ],
+      "icons": [
+        "fa fa-twitter",
+        "fa fa-github"
+      ]
+    },
+    {
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
+      "bio": "I'm a Designer, developer, tech lover and code junkie",
+      "img": "300x300.png",
+      "social": [
+        "https://twitter.com/miracleio",
+        "https://github.com/miracleonyenma"
+      ],
+      "icons": [
+        "fa fa-twitter",
+        "fa fa-github"
+      ]
+    },
+    {
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
+      "bio": "I'm a Designer, developer, tech lover and code junkie",
+      "img": "150x150.png",
+      "social": [
+        "https://twitter.com/miracleio",
+        "https://github.com/miracleonyenma"
+      ],
+      "icons": [
+        "fa fa-twitter",
+        "fa fa-github"
+      ]
+    },
+    {
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
+      "bio": "I'm a Designer, developer, tech lover and code junkie",
+      "img": "150x150.png",
+      "social": [
+        "https://twitter.com/miracleio",
+        "https://github.com/miracleonyenma"
+      ],
+      "icons": [
+        "fa fa-twitter",
+        "fa fa-github"
+      ]
+    },
+    {
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
+      "bio": "I'm a Designer, developer, tech lover and code junkie",
+      "img": "150x150.png",
+      "social": [
+        "https://twitter.com/miracleio",
+        "https://github.com/miracleonyenma"
+      ],
+      "icons": [
+        "fa fa-twitter",
+        "fa fa-github"
+      ]
+    },
+    {
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
+      "bio": "I'm a Designer, developer, tech lover and code junkie",
+      "img": "150x150.png",
+      "social": [
+        "https://twitter.com/miracleio",
+        "https://github.com/miracleonyenma"
+      ],
+      "icons": [
+        "fa fa-twitter",
+        "fa fa-github"
+      ]
+    },
+    {
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
+      "bio": "I'm a Designer, developer, tech lover and code junkie",
+      "img": "150x150.png",
+      "social": [
+        "https://twitter.com/miracleio",
+        "https://github.com/miracleonyenma"
+      ],
+      "icons": [
+        "fa fa-twitter",
+        "fa fa-github"
+      ]
+    },
+    {
+      "name": "Primidac",
+      "role": "Cryptographer",
+      "company": "Hiroutes Digital",
+      "bio": "I'm a Designer, developer, tech lover and code junkie",
+      "img": "150x150.png",
+      "social": [
+        "https://twitter.com/miracleio",
+        "https://github.com/miracleonyenma"
+      ],
+      "icons": [
+        "fa fa-twitter",
         "fa fa-github"
       ]
     }
