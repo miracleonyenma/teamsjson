@@ -1,11 +1,11 @@
 {
-  "name": "teamsjson-master",
+  "name": "teamsjson",
   "version": "1.0.0",
   "description": "json create read update and delete (CRUD) app",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon index.js",
-    "start": "nodemon server.js"
+    "test": "node server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
