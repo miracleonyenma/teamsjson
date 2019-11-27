@@ -75,7 +75,7 @@
 
         const updateUser = (e, formFiles, formData, id)=>{
             e.preventDefault();
-            fetch(`http://localhost:3001/files/${id}`, {
+            fetch(`https://teamjson.herokuapp.com/files/${id}`, {
                 method: 'PUT',
                 body: formFiles
             })
@@ -90,7 +90,7 @@
             .catch(err => console.log(err))
 
 
-            fetch(`http://localhost:3001/files/${id}`, {
+            fetch(`https://teamjson.herokuapp.com/users/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type' : 'application/json'
@@ -119,7 +119,7 @@
 
         //get the users
         const getMembers = ()=>{
-            fetch('http://localhost:3001/users')
+            fetch('https://teamjson.herokuapp.com/users')
             .then( res => res.json() )
             .then( data => usersData = data.members)
             .catch( err => console.log(err));
@@ -156,7 +156,7 @@
             e.preventDefault();
             console.log("stuff");
             
-            fetch('http://localhost:3001/files', {
+            fetch('https://teamjson.herokuapp.com/files', {
                 method: 'POST',
                 body: formFiles
             })
@@ -175,7 +175,7 @@
                 filePath = path;       
                 console.log(filePath);
 
-                fetch('http://localhost:3001/users', {
+                fetch('https://teamjson.herokuapp.com/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type' : 'application/json'
