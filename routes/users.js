@@ -14,6 +14,7 @@ const readFile = (callback, returnJson = false, filePath = dataPath, encoding = 
       throw err;
     };
 
+    //if true, parse the data to json
     callback(returnJson ? JSON.parse(data) : data);
   });
 };
@@ -75,8 +76,16 @@ const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') =
     readFile(data => {
 
       //add the user
-      console.log(req.params["id"]);
-    });
+      const userId = req.params["id"];
+      data.members[userId] = req.body
+      console.log(req.body, data.members[userId]);
+
+      writeFile(JSON.stringify(data, null, 2), () => {
+        res.status(200).send(`users id:${userId} updated`);
+      });
+
+    }, 
+      true);
   });
 
 };

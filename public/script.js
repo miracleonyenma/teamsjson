@@ -41,17 +41,37 @@
         renderedUserbtns = {},
         filePath;
 
+    const usersUrl = "http://teamjson.herokuapp.com/users",
+        filesUrl = "http://teamjson.herokuapp.com/files",
+        downloadUrl = "http://teamjson.herokuapp.com/download"
+        ;
+
 
 
     document.addEventListener("DOMContentLoaded", function(){
         var form = document.querySelector("form"),
+            submitBtn = form.querySelector("#submit"),
             output = document.querySelector("#output"),
             imageFile = document.querySelector("#imageFile"),
             fakeBtn = document.querySelector("#fakeBtn"),
             usersCont = document.querySelector("#users ul"),
             refreshBtn = document.querySelector("#refresh"),
+            downloadBtn = document.querySelector("#download"),
             submitAction = {status : "CREATE", id : ""};
         ;
+
+        //set attribute helper function
+        const setAttributes = (el, attrs)=>{
+            for(k in attrs){
+                el.setAttribute(k, attrs[k]);
+            }
+        }
+
+
+        //set the download link
+
+        setAttributes(downloadBtn.parentElement, {href : downloadUrl});
+
 
         const memberBtnFunc = (users)=>{
             for(let i = 0; i < renderedUserbtns.length; i++){
@@ -69,13 +89,20 @@
                     form.querySelector("#icons2").value = users[id].icons[1];
                     
                     submitAction = {status: "UPDATE", id : id};
+                    console.log(submitBtn.value);
+                    submitBtn.value = (`${submitAction.status} User`).toLowerCase();
+    
+    
                 });
+
+                console.log(submitBtn.value);
+                submitBtn.value = (`${submitAction.status} User`).toLowerCase();
+
             }    
         }
 
         const updateUser = (e, formFiles, formData, id)=>{
-            e.preventDefault();
-            fetch(`https://teamjson.herokuapp.com/files/${id}`, {
+            e.preventDefault();            fetch(`${filesUrl}/${id}`, {
                 method: 'PUT',
                 body: formFiles
             })
@@ -83,55 +110,53 @@
                 return res.json()
             })
             .then(data => {
-                console.log(data.path);
+                console.log(data);
                 getPath(data.path);
                 return data.path
             })
             .catch(err => console.log(err))
 
+            const getPath = (path)=>{
 
-            fetch(`https://teamjson.herokuapp.com/users/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type' : 'application/json'
-                },
-                body: JSON.stringify({
-                    name : formData.name,
-                    role : formData.role,
-                    company : formData.company,
-                    bio : formData.bio,
-                    img : imageFile.files[0].name,
-                    social : formData.social,
-                    icons: formData.icons
+                filePath = path;       
+                console.log(filePath);
+
+                fetch(`${usersUrl}/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name : formData.name,
+                        role : formData.role,
+                        company : formData.company,
+                        bio : formData.bio,
+                        img : imageFile.files[0].name,
+                        social : formData.social,
+                        icons: formData.icons
+                    })
                 })
-            })
-            .then(res => {
-                res.ok ? console.log("SUCCESS") : console.log("ERROR");
-                return res.json();
-            })
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => console.log(error))
-
+                .then(res => {
+                    res.ok ? console.log("SUCCESS") : console.log("ERROR");
+                    return res.json();
+                })
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => console.log(error));
+            }
         }
 
 
         //get the users
         const getMembers = ()=>{
-            fetch('https://teamjson.herokuapp.com/users')
+            fetch(usersUrl)
             .then( res => res.json() )
             .then( data => usersData = data.members)
             .catch( err => console.log(err));
 
             console.log(usersData.length);
 
-            //set attribute helper function
-            const setAttributes = (el, attrs)=>{
-                for(k in attrs){
-                    el.setAttribute(k, attrs[k]);
-                }
-            }
 
             if(usersData.length !== undefined && document.querySelectorAll("#users ul li").length !== usersData.length){
                 for(let i = 0; i < usersData.length; i++){
@@ -156,7 +181,7 @@
             e.preventDefault();
             console.log("stuff");
             
-            fetch('https://teamjson.herokuapp.com/files', {
+            fetch(filesUrl, {
                 method: 'POST',
                 body: formFiles
             })
@@ -175,7 +200,7 @@
                 filePath = path;       
                 console.log(filePath);
 
-                fetch('https://teamjson.herokuapp.com/users', {
+                fetch(usersUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type' : 'application/json'
@@ -252,7 +277,13 @@
             // }
         });
 
+        const getJson = (e)=>{
+            console.log("getiing json");
+        }
+
         refreshBtn.addEventListener('click', getMembers);
+        downloadBtn.addEventListener('click', getJson);
+
     });
 
 

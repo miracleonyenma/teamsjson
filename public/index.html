@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TeamsForm</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Ubuntu+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="main">
@@ -68,7 +69,7 @@
                     </div>
 
                 </div>
-                <div class="submit-cont"><input type="submit" value="submit"></div>
+                <div class="submit-cont"><input id="submit" type="submit" value="submit"></div>
             </form>
 
             <div class="output-cont">
@@ -76,13 +77,23 @@
             </div>
         </div>
 
-        <div class="users cont">
-            <div id="users">
-                <ul>
-                    <!--Members HEre-->
-                </ul>
+        <div class="actions-cont">
+
+            <div class="users cont">
+                <div id="users">
+                    <ul>
+                        <!--Members HEre-->
+                    </ul>
+                </div>
+                <button class="action-btn" id="refresh">Get members</button>
             </div>
-            <button id="refresh">Get members</button>
+
+            <div class="download cont">
+                <div id="download-disp">
+                </div>
+                <a href="http://" target="_blank" rel="noopener noreferrer"><button class="action-btn" id="download"> Download </button></a>
+            </div>
+
         </div>
 
     </div>

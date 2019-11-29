@@ -13,6 +13,12 @@ const appRouter =  (app, fs) => {
     res.send('welcome')
   });
 
+  app.get('/download', (req, res)=>{
+    console.log("download")
+    const file = `${__dirname}` + `/../data/team.json`;
+    res.download(file);
+  });
+
   // run our user route module here to complete the wire up
   userRoutes(app, fs);  
 

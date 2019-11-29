@@ -14,7 +14,7 @@
   padding: 0;
   -webkit-transition: 0.32s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: 0.32s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  font-family: monospace;
+  font-family: 'Ubuntu Mono', 'Anonymous Pro', monospace;
 }
 
 body {
@@ -25,6 +25,7 @@ body {
 .main {
   width: 100%;
   position: relative;
+  display: block;
 }
 
 .cont {
@@ -90,6 +91,10 @@ form {
   -webkit-transform: translate(5%, -125%);
           transform: translate(5%, -125%);
   opacity: 0.68;
+}
+
+.form-group textarea {
+  padding: 0 0 0 20px;
 }
 
 .form-group textarea:hover + label span, .form-group textarea:focus + label span, .form-group textarea:valid + label span {
@@ -240,6 +245,22 @@ form {
   grid-column: 2;
 }
 
+.action-btn {
+  margin: auto;
+  display: block;
+  margin: 1em auto;
+  background: var(--background-submit);
+  padding: 0.35em 1em;
+  border: none;
+  border-radius: 36px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.action-btn:hover, .action-btn:active, .action-btn:focus {
+  background: var(--background-submit-variant);
+}
+
 .submit-cont {
   width: 100%;
   padding: 2em 0 0 0;
@@ -277,10 +298,10 @@ form {
   border-radius: 6px;
 }
 
-.users.cont {
+.cont {
   position: relative;
   width: 310px;
-  margin: 6% auto;
+  margin: 8% auto;
   background: var(--background-content);
   border-radius: 12px;
   border: 2px solid var(--border-content);
@@ -304,11 +325,11 @@ form {
   cursor: pointer;
 }
 
-.users.cont div#users ul li:nth-of-type(1), .users.cont div#users ul li:nth-of-type(1) a button {
+.users.cont div#users ul li:nth-of-type(1), .users.cont div#users ul li:nth-of-type(1) button {
   border-radius: 6px 6px 0 0;
 }
 
-.users.cont div#users ul li:nth-last-of-type(1), .users.cont div#users ul li:nth-last-of-type(1) a button {
+.users.cont div#users ul li:nth-last-of-type(1), .users.cont div#users ul li:nth-last-of-type(1) button {
   border-radius: 0 0 6px 6px;
   border-bottom-style: solid;
 }
@@ -327,32 +348,33 @@ form {
   background: var(--background-content);
 }
 
-.users.cont button#refresh {
-  margin: auto;
-  display: block;
-  margin: 1em auto;
-  background: var(--background-submit);
-  padding: 0.25em 0.5em;
-  border: none;
-  border-radius: 36px;
-  cursor: pointer;
-  color: var(--text);
-}
-
-.users.cont button#refresh:hover, .users.cont button#refresh:active, .users.cont button#refresh:focus {
-  background: var(--background-submit-variant);
-}
-
 @media screen and (min-width: 680px) {
+  .main {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2fr 1fr;
+        grid-template-columns: 2fr 1fr;
+    grid-gap: 1.4em;
+    padding: 1em;
+  }
   .cont {
     margin: 6% 10%;
     float: left;
   }
   .form.cont {
-    width: 40%;
+    width: 80%;
+    -ms-grid-column: 1;
+    grid-column: 1;
   }
   .users.cont {
-    width: 30%;
+    width: 80%;
+    -ms-grid-column: 2;
+    grid-column: 2;
+  }
+  .download.cont {
+    width: 80%;
+    -ms-grid-column: 2;
+    grid-column: 2;
   }
 }
 /*# sourceMappingURL=style.css.map */

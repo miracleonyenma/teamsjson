@@ -72,14 +72,42 @@ const readFile = (callback, returnJson = false, filePath = dataPath, encoding = 
 
     });
 
-    //   //update
-    // app.put('/files/:id', (req, res) => {
-    //     readFile(data => {
+      //update
+    app.put('/files/:id', (req, res) => {
+      readFile(data => {
+        const userId = req.params["id"];
+        console.log(userId);
+        const file = req.files.imageFile;
+        const fileNameArr = file.name.split(".");
+        const fileName = `${userId}.${fileNameArr.slice(-1)[0]}`;
+        console.log(fileName, userId);
+        const filePath = path.join(__dirname, "../images/" + fileName);
+        console.log(filePath);
 
-    //     //add the user
-    //     console.log(req.params["id"]);
-    //     });
-    // });
+        file.mv(filePath, (err) => {
+            if(err){
+                console.log(err)
+                res.writeHead(500, {
+                    'Content-Type': 'application/json'
+                })
+                res.end(JSON.stringify({ status: 'error', message: err }));
+                return
+            }
+            res.writeHead(200, {
+                'Content-Type': 'application/json'        
+            })
+            res.end(JSON.stringify({ status: 'success', path: filePath }))
+        })
+
+        // data.members[userId].img = filePath;
+
+        // writeFile(JSON.stringify(data, null, 2), () => {
+        //   // res.status(200).send(`users id:${userId} updated`);
+        // });  
+
+        return userId            
+    }, true);
+});
 
 
 };
