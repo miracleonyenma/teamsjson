@@ -41,9 +41,9 @@
         renderedUserbtns = {},
         filePath;
 
-    const usersUrl = "http://teamjson.herokuapp.com/users",
-        filesUrl = "http://teamjson.herokuapp.com/files",
-        downloadUrl = "http://teamjson.herokuapp.com/download"
+    const usersUrl = "http://localhost:3001/users",
+        filesUrl = "http://localhost:3001/files",
+        downloadUrl = "http://localhost:3001/download"
         ;
 
 
@@ -159,6 +159,9 @@
 
 
             if(usersData.length !== undefined && document.querySelectorAll("#users ul li").length !== usersData.length){
+                while(usersCont.firstElementChild){
+                    usersCont.removeChild(usersCont.firstElementChild);
+                }
                 for(let i = 0; i < usersData.length; i++){
 
                     var userSect = document.createElement("li");
