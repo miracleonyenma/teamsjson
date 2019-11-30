@@ -41,12 +41,12 @@
         renderedUserbtns = {},
         filePath;
 
-    const usersUrl = "http://localhost:3001/users",
-        filesUrl = "http://localhost:3001/files",
-        downloadUrl = "http://localhost:3001/download"
+    const usersUrl = "http://teamjson.herokuapp.com/users",
+        filesUrl = "http://teamjson.herokuapp.com/files",
+        downloadUrl = "http://teamjson.herokuapp.com/download"
         ;
 
-
+        //http://teamjson.herokuapp.com
 
     document.addEventListener("DOMContentLoaded", function(){
         var form = document.querySelector("form"),
@@ -140,7 +140,7 @@
                         role : formData.role,
                         company : formData.company,
                         bio : formData.bio,
-                        img : imageFile.files[0].name,
+                        img : filePath,
                         social : formData.social,
                         icons: formData.icons
                     })
@@ -174,7 +174,7 @@
             console.log(usersData, usersData.length, element.children);
 
             const populateElement = () => {
-                if(usersData.length !== undefined && element.children.length != usersData.length){
+                if(usersData.length !== undefined){
                     while(element.firstElementChild){
                         element.removeChild(element.firstElementChild);
                     }
