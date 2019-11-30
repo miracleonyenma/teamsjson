@@ -55,6 +55,7 @@
             imageFile = document.querySelector("#imageFile"),
             fakeBtn = document.querySelector("#fakeBtn"),
             usersCont = document.querySelector("#users ul"),
+            downloadCont = document.querySelector("#download-disp ul"),
             refreshBtn = document.querySelector("#refresh"),
             downloadBtn = document.querySelector("#download"),
             submitAction = {status : "CREATE", id : ""};
@@ -67,42 +68,50 @@
             }
         }
 
+        //error handler
+        const handleErr = (err) => {
+            console.log(err);
+        } 
 
         //set the download link
 
         setAttributes(downloadBtn.parentElement, {href : downloadUrl});
 
 
-        const memberBtnFunc = (users)=>{
-            for(let i = 0; i < renderedUserbtns.length; i++){
-                renderedUserbtns[i].addEventListener("click", function(e){
-                    const id = e.target.getAttribute("data-id");
-                    console.log(id);
-
-                    form.querySelector("#name").value = users[id].name;
-                    form.querySelector("#role").value = users[id].role;
-                    form.querySelector("#company").value = users[id].company;
-                    form.querySelector("#bio").value = users[id].bio;
-                    form.querySelector("#social1").value = users[id].social[0];
-                    form.querySelector("#social2").value = users[id].social[1];
-                    form.querySelector("#icons1").value = users[id].icons[0];
-                    form.querySelector("#icons2").value = users[id].icons[1];
-                    
-                    submitAction = {status: "UPDATE", id : id};
+        const memberBtnFunc = (users, membersPresent)=>{
+            if(membersPresent){
+                for(let i = 0; i < renderedUserbtns.length; i++){
+                    renderedUserbtns[i].addEventListener("click", function(e){
+                        const id = e.target.getAttribute("data-id");
+                        console.log(id);
+    
+                        form.querySelector("#name").value = users[id].name;
+                        form.querySelector("#role").value = users[id].role;
+                        form.querySelector("#company").value = users[id].company;
+                        form.querySelector("#bio").value = users[id].bio;
+                        form.querySelector("#social1").value = users[id].social[0];
+                        form.querySelector("#social2").value = users[id].social[1];
+                        form.querySelector("#icons1").value = users[id].icons[0];
+                        form.querySelector("#icons2").value = users[id].icons[1];
+                        
+                        submitAction = {status: "UPDATE", id : id};
+                        console.log(submitBtn.value);
+                        submitBtn.value = (`${submitAction.status} User`).toLowerCase();
+        
+        
+                    });
+    
                     console.log(submitBtn.value);
                     submitBtn.value = (`${submitAction.status} User`).toLowerCase();
     
+                }    
     
-                });
-
-                console.log(submitBtn.value);
-                submitBtn.value = (`${submitAction.status} User`).toLowerCase();
-
-            }    
+            }
         }
 
         const updateUser = (e, formFiles, formData, id)=>{
-            e.preventDefault();            fetch(`${filesUrl}/${id}`, {
+            e.preventDefault();            
+            fetch(`${filesUrl}/${id}`, {
                 method: 'PUT',
                 body: formFiles
             })
@@ -114,7 +123,7 @@
                 getPath(data.path);
                 return data.path
             })
-            .catch(err => console.log(err))
+            .catch(err => handleErr(err))
 
             const getPath = (path)=>{
 
@@ -149,35 +158,48 @@
 
 
         //get the users
-        const getMembers = (url, element, data)=>{
-            fetch(usersUrl)
-            .then( res => res.json() )
-            .then( data => usersData = data.members)
-            .catch( err => console.log(err));
+        const getMembers = (url, element, membersPresent)=>{
+            fetch(url)
+            .then( res => {
+                return res.json()
+            })
+            .then( data => {
+                console.log(membersPresent, data);
+                membersPresent ? usersData = data.members : usersData = data
+                populateElement();
+                return usersData
+            })
+            .catch( err => handleErr(err));
 
-            console.log(usersData.length);
+            console.log(usersData, usersData.length, element.children);
 
-
-            if(usersData.length !== undefined && document.querySelectorAll("#users ul li").length !== usersData.length){
-                while(usersCont.firstElementChild){
-                    usersCont.removeChild(usersCont.firstElementChild);
+            const populateElement = () => {
+                if(usersData.length !== undefined && element.children.length != usersData.length){
+                    while(element.firstElementChild){
+                        element.removeChild(element.firstElementChild);
+                    }
+                    for(let i = 0; i < usersData.length; i++){
+    
+                        var userSect = document.createElement("li");
+                        var userLink = document.createElement("a");
+                        var userBtn = document.createElement("button");
+    
+                        membersPresent ? userBtn.innerText = usersData[i].name : userBtn.innerText = usersData[i]
+                        
+                        element.appendChild(userSect);
+                        userSect.appendChild(userLink);
+                        userLink.appendChild(userBtn);
+                        
+                        membersPresent ? setAttributes(userLink, {"data-id" : i}) : setAttributes(userLink, {"href" : `${downloadUrl}/${usersData[i]}`})
+                        setAttributes(userBtn, {"data-id" : i});
+                    }
+                    renderedUserbtns = element.querySelectorAll("li button");
+                    memberBtnFunc(usersData, membersPresent);
+                    console.log(renderedUserbtns)
                 }
-                for(let i = 0; i < usersData.length; i++){
-
-                    var userSect = document.createElement("li");
-                    var userBtn = document.createElement("button");
-                    userBtn.innerText = usersData[i].name;
-
-                    usersCont.appendChild(userSect);
-                    userSect.appendChild(userBtn);
-                
-                    setAttributes(userBtn, {"data-id" : i});
-                    
-                }
-                renderedUserbtns = usersCont.querySelectorAll("li button");
-                memberBtnFunc(usersData);
-                console.log(renderedUserbtns)
+    
             }
+
         };
 
         const createUser = (e, formFiles, formData)=>{
@@ -196,7 +218,7 @@
                 getPath(data.path);
                 return data.path
             })
-            .catch(err => console.log(err))
+            .catch(err => handleErr(err))
 
             const getPath = (path)=>{
 
@@ -270,14 +292,6 @@
             }else{
                 deleteUser(e);
             }
-            // switch (submitAction.status) {
-            //     case "CREATE" :
-            //         createUser(e, formFiles, formData);
-            //     case "UPDATE" :
-            //         updateUser(e, formFiles, formData, submitAction.id);
-            //     case "DELETE" :
-            //         deleteUser(e);
-            // }
         });
 
         const getJson = (e)=>{
@@ -287,11 +301,11 @@
                 return res.json()
             })
             .then( data => console.log(data))
-            .catch( err => console.log(err))
+            .catch( err => handleErr(err))
         }
 
-        refreshBtn.addEventListener('click', getMembers);
-        downloadBtn.addEventListener('click', getJson);
+        refreshBtn.addEventListener('click', ()=> getMembers(usersUrl, usersCont, true));
+        downloadBtn.addEventListener('click', ()=> getMembers(downloadUrl, downloadCont, false));
 
     });
 

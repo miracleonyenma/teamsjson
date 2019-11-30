@@ -34,8 +34,14 @@ const appRouter =  (app, fs, path) => {
       res.writeHead(200, {
         'Content-Type': 'application/json'        
       })
-      res.end(JSON.stringify({ status: 'success', files: files }))
+      res.end(JSON.stringify(files));
     })
+  });
+
+  app.get('/download/:id', (req, res) => {
+    const file = `${__dirname}` + `/../data/${req.params["id"]}`;
+    res.download(file);
+
   });
 
   // run our user route module here to complete the wire up

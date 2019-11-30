@@ -307,7 +307,7 @@ form {
   border: 2px solid var(--border-content);
 }
 
-.users.cont div#users {
+.cont div.output-cont {
   padding: 2em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -317,24 +317,27 @@ form {
           justify-content: center;
 }
 
-.users.cont div#users ul li {
+.cont div.output-cont ul li {
   list-style: none;
   background: var(--background-content);
   border: 2px solid var(--border-content);
   border-bottom-style: none;
-  cursor: pointer;
 }
 
-.users.cont div#users ul li:nth-of-type(1), .users.cont div#users ul li:nth-of-type(1) button {
+.cont div.output-cont ul li:nth-of-type(1), .cont div.output-cont ul li:nth-of-type(1) button {
   border-radius: 6px 6px 0 0;
 }
 
-.users.cont div#users ul li:nth-last-of-type(1), .users.cont div#users ul li:nth-last-of-type(1) button {
+.cont div.output-cont ul li:nth-last-of-type(1), .cont div.output-cont ul li:nth-last-of-type(1) button {
   border-radius: 0 0 6px 6px;
   border-bottom-style: solid;
 }
 
-.users.cont div#users ul li button {
+.cont div.output-cont ul li a {
+  cursor: pointer;
+}
+
+.cont div.output-cont ul li button {
   width: 100%;
   height: 100%;
   background: var(--background);
@@ -344,7 +347,7 @@ form {
   cursor: pointer;
 }
 
-.users.cont div#users ul li button:hover, .users.cont div#users ul li button:active, .users.cont div#users ul li button:focus {
+.cont div.output-cont ul li button:hover, .cont div.output-cont ul li button:active, .cont div.output-cont ul li button:focus {
   background: var(--background-content);
 }
 

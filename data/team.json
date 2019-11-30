@@ -76,6 +76,21 @@
         "fa fa-facebook",
         "fa fa-github"
       ]
+    },
+    {
+      "name": "Emmanuel Uche",
+      "role": "Front-End developer and cyber-Security personnel",
+      "company": "Alphas",
+      "bio": "some",
+      "img": "C:\\Users\\Mi\\Documents\\october\\teamsjson\\images\\5.png",
+      "social": [
+        "https://facebook.com/Uc Emma",
+        "https://facebook.com/Uc Emma"
+      ],
+      "icons": [
+        "fa fa-github",
+        "fa fa-twitter"
+      ]
     }
   ]
 }

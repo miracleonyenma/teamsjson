@@ -315,23 +315,19 @@ form{
     background: var(--background-content);
     border-radius: 12px;
     border: 2px solid var(--border-content);
-}
 
-.users.cont{
-    // grid-column: 2;
-
-    div#users{
+    div.output-cont{
         padding: 2em;
         display: flex;
         justify-content: center;
 
         ul{
+            
             li{
                 list-style: none;
                 background: var(--background-content);
                 border: 2px solid var(--border-content);
                 border-bottom-style: none;
-                cursor: pointer;
 
                 &:nth-of-type(1), &:nth-of-type(1) button{
                     border-radius: 6px 6px 0 0;
@@ -341,7 +337,9 @@ form{
                     border-radius: 0 0 6px 6px;
                     border-bottom-style: solid;
                 }
-
+                a{
+                    cursor: pointer;
+                }
                 button{
                     width: 100%;
                     height: 100%;
@@ -359,6 +357,11 @@ form{
             }
         }
     }
+
+}
+
+.users.cont{
+    // grid-column: 2;
 
 }
 
