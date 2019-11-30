@@ -149,7 +149,7 @@
 
 
         //get the users
-        const getMembers = ()=>{
+        const getMembers = (url, element, data)=>{
             fetch(usersUrl)
             .then( res => res.json() )
             .then( data => usersData = data.members)
@@ -183,7 +183,7 @@
         const createUser = (e, formFiles, formData)=>{
             e.preventDefault();
             console.log("stuff");
-            
+            console.log(formFiles);
             fetch(filesUrl, {
                 method: 'POST',
                 body: formFiles
@@ -282,6 +282,12 @@
 
         const getJson = (e)=>{
             console.log("getiing json");
+            fetch(downloadUrl)
+            .then( res => {
+                return res.json()
+            })
+            .then( data => console.log(data))
+            .catch( err => console.log(err))
         }
 
         refreshBtn.addEventListener('click', getMembers);

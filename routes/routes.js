@@ -1,3 +1,4 @@
+
 // load up our shiny new route for users
 const userRoutes = require('./users');
 
@@ -5,8 +6,8 @@ const userRoutes = require('./users');
 const fileRoutes = require('./files');
 
 
-const appRouter =  (app, fs) => {
-  // we've added in a default route here that handles empty routes
+const appRouter =  (app, fs, path) => {
+  // we've added in a default route here that handles empty and downlaod routes
       // at the base API url
 
   app.get('/', (req, res) => {
@@ -14,16 +15,34 @@ const appRouter =  (app, fs) => {
   });
 
   app.get('/download', (req, res)=>{
-    console.log("download")
-    const file = `${__dirname}` + `/../data/team.json`;
-    res.download(file);
+    // console.log("download")
+    // const file = `${__dirname}` + `/../data/team.json`;
+    // res.download(file);
+
+    const downloadDir = path.join(`${__dirname}/../data`);
+    console.log(downloadDir);
+
+    fs.readdir(downloadDir, (err, files) => {
+      if(err){
+        console.log(err);
+        res.writeHead(500, {
+          'Content-Type': 'application/json'
+        });
+        res.end(JSON.stringify({ status: 'error', message: err }));
+        return
+      }
+      res.writeHead(200, {
+        'Content-Type': 'application/json'        
+      })
+      res.end(JSON.stringify({ status: 'success', files: files }))
+    })
   });
 
   // run our user route module here to complete the wire up
-  userRoutes(app, fs);  
+  userRoutes(app, fs, path);  
 
   // run our files route module here to complete the wire up
-  fileRoutes(app, fs);  
+  fileRoutes(app, fs, path);  
 
 };
 

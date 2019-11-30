@@ -10,7 +10,7 @@ const fileRoutes = (app, fs) =>{
 const readFile = (callback, returnJson = false, filePath = dataPath, encoding = 'utf8') => {
     fs.readFile(filePath, encoding, (err, data) => {
       if(err){
-        throw err;
+        console.log(err);
       };
 
       callback(returnJson ? JSON.parse(data) : data);
@@ -21,7 +21,7 @@ const readFile = (callback, returnJson = false, filePath = dataPath, encoding = 
 
     fs.writeFile(filePath, fileData, encoding, (err, data) => {
       if(err){
-        throw err;
+        console.log(err);
       }
 
       callback();

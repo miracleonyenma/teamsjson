@@ -28,7 +28,7 @@ app.use(fileUpload());
 
 // this is where we'll handle our various routes from
 
-const routes = require('./routes/routes.js')(app, fs);
+const routes = require('./routes/routes.js')(app, fs, path);
 
 
 // finally, launch our server on port 3001.
