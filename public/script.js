@@ -41,19 +41,20 @@
         renderedUserbtns = {},
         filePath;
 
-    const usersUrl = "http://teamjson.herokuapp.com/users",
-        filesUrl = "http://teamjson.herokuapp.com/files",
-        downloadUrl = "http://teamjson.herokuapp.com/download"
+    const usersUrl = "http://localhost:3001/users",
+        filesUrl = "http://localhost:3001/files",
+        downloadUrl = "http://localhost:3001/download"
         ;
 
         //http://teamjson.herokuapp.com
 
     document.addEventListener("DOMContentLoaded", function(){
         var form = document.querySelector("form"),
-            submitBtn = form.querySelector("#submit"),
+            // submitBtn = document.querySelector("#submit"),
             output = document.querySelector("#output"),
             imageFile = document.querySelector("#imageFile"),
             fakeBtn = document.querySelector("#fakeBtn"),
+            submitCont = document.querySelector("#submit-cont"),
             usersCont = document.querySelector("#users ul"),
             downloadCont = document.querySelector("#download-disp ul"),
             refreshBtn = document.querySelector("#refresh"),
@@ -95,9 +96,7 @@
                         form.querySelector("#icons2").value = users[id].icons[1];
                         
                         submitAction = {status: "UPDATE", id : id};
-                        console.log(submitBtn.value);
-                        submitBtn.value = (`${submitAction.status} User`).toLowerCase();
-        
+                        console.log(submitBtn.value);        
         
                     });
     
@@ -108,6 +107,67 @@
     
             }
         }
+
+                //get the users
+                const getMembers = (url, element, membersPresent)=>{
+                    fetch(url)
+                    .then( res => {
+                        return res.json()
+                    })
+                    .then( data => {
+                        console.log(membersPresent, data);
+                        membersPresent ? usersData = data.members : usersData = data
+                        populateElement();
+                        return usersData
+                    })
+                    .catch( err => handleErr(err));
+        
+                    console.log(usersData, usersData.length, element.children);
+        
+                    const populateElement = () => {
+                        if(usersData.length !== undefined){
+
+                            while(submitCont.firstElementChild){
+                                submitCont.removeChild(submitCont.firstElementChild);
+                            }
+
+                            let createdSubmitBtn = document.createElement("input");
+                            var deleteBtn = document.createElement("button");
+                            deleteBtn.innerText = "Delete";
+
+                            setAttributes(createdSubmitBtn, {"id" : "submit", "class" : "buttons", "type" : "submit", "value" : "submit"});
+                            setAttributes(deleteBtn, {"id" : "delete", "class" : "buttons", "type" : "submit"});
+
+                            submitCont.appendChild(createdSubmitBtn);
+                            submitCont.appendChild(deleteBtn);
+        
+                            while(element.firstElementChild){
+                                element.removeChild(element.firstElementChild);
+                            }
+                            for(let i = 0; i < usersData.length; i++){
+            
+                                var userSect = document.createElement("li");
+                                var userLink = document.createElement("a");
+                                var userBtn = document.createElement("button");
+                                membersPresent ? userBtn.innerText = usersData[i].name : userBtn.innerText = usersData[i]
+                                
+                                element.appendChild(userSect);
+                                userSect.appendChild(userLink);
+                                userLink.appendChild(userBtn);
+                                
+                                membersPresent ? setAttributes(userLink, {"data-id" : i}) : setAttributes(userLink, {"href" : `${downloadUrl}/${usersData[i]}`})
+                                setAttributes(userBtn, {"data-id" : i});
+                            }
+                            renderedUserbtns = element.querySelectorAll("li button");
+                            memberBtnFunc(usersData, membersPresent);
+                            console.log(renderedUserbtns)
+                        }
+            
+                    }
+        
+                };
+        
+        
 
         const updateUser = (e, formFiles, formData, id)=>{
             e.preventDefault();            
@@ -152,55 +212,10 @@
                 .then(data => {
                     console.log(data);
                 })
-                .catch(error => console.log(error));
+                .catch(err =>handleErr(err));
             }
         }
 
-
-        //get the users
-        const getMembers = (url, element, membersPresent)=>{
-            fetch(url)
-            .then( res => {
-                return res.json()
-            })
-            .then( data => {
-                console.log(membersPresent, data);
-                membersPresent ? usersData = data.members : usersData = data
-                populateElement();
-                return usersData
-            })
-            .catch( err => handleErr(err));
-
-            console.log(usersData, usersData.length, element.children);
-
-            const populateElement = () => {
-                if(usersData.length !== undefined){
-                    while(element.firstElementChild){
-                        element.removeChild(element.firstElementChild);
-                    }
-                    for(let i = 0; i < usersData.length; i++){
-    
-                        var userSect = document.createElement("li");
-                        var userLink = document.createElement("a");
-                        var userBtn = document.createElement("button");
-    
-                        membersPresent ? userBtn.innerText = usersData[i].name : userBtn.innerText = usersData[i]
-                        
-                        element.appendChild(userSect);
-                        userSect.appendChild(userLink);
-                        userLink.appendChild(userBtn);
-                        
-                        membersPresent ? setAttributes(userLink, {"data-id" : i}) : setAttributes(userLink, {"href" : `${downloadUrl}/${usersData[i]}`})
-                        setAttributes(userBtn, {"data-id" : i});
-                    }
-                    renderedUserbtns = element.querySelectorAll("li button");
-                    memberBtnFunc(usersData, membersPresent);
-                    console.log(renderedUserbtns)
-                }
-    
-            }
-
-        };
 
         const createUser = (e, formFiles, formData)=>{
             e.preventDefault();
@@ -290,20 +305,9 @@
             }else if(submitAction.status == "UPDATE"){
                 updateUser(e, formFiles, formData, submitAction.id);
             }else{
-                deleteUser(e);
+                deleteUser(e, formFiles, formData, submitAction.id);
             }
         });
-
-        const getJson = (e)=>{
-            console.log("getiing json");
-            fetch(downloadUrl)
-            .then( res => {
-                return res.json()
-            })
-            .then( data => console.log(data))
-            .catch( err => handleErr(err))
-        }
-
         refreshBtn.addEventListener('click', ()=> getMembers(usersUrl, usersCont, true));
         downloadBtn.addEventListener('click', ()=> getMembers(downloadUrl, downloadCont, false));
 
