@@ -5,17 +5,17 @@ const fileRoutes = (app, fs) =>{
     const dataPath = './data/team.json';
   
     
-// refactored helper methods
+  // refactored helper methods
 
-const readFile = (callback, returnJson = false, filePath = dataPath, encoding = 'utf8') => {
-    fs.readFile(filePath, encoding, (err, data) => {
-      if(err){
-        console.log(err);
-      };
+  const readFile = (callback, returnJson = false, filePath = dataPath, encoding = 'utf8') => {
+      fs.readFile(filePath, encoding, (err, data) => {
+        if(err){
+          console.log(err);
+        };
 
-      callback(returnJson ? JSON.parse(data) : data);
-    });
-  };
+        callback(returnJson ? JSON.parse(data) : data);
+      });
+    };
 
   const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') => {
 
@@ -28,86 +28,151 @@ const readFile = (callback, returnJson = false, filePath = dataPath, encoding = 
     });
   };
 
+  // const getFiles = (dir, next)=>{
+  //   const filesDir = path.join(`${__dirname}/../${dir}`);
+  //   console.log(filesDir);
+  //   let filesList = [];
 
-
-
-    app.post('/files', (req, res) => {
-
-        readFile(data => {
-            newUserId = data.members.length;
-            console.log(newUserId);
-            const file = req.files.imageFile;
-            const fileNameArr = file.name.split(".");
-            const fileName = `${newUserId}.${fileNameArr.slice(-1)[0]}`;
-            console.log(fileName, newUserId);
-            const filePath = path.join(__dirname, "../images/" + fileName);
-            console.log(filePath);
-            var newUserId;
+    // fs.readdir(path.join(`${__dirname}/../${dir}`), (err, files) => {
+    //   if(err){
+    //     console.log(err);
+    //     // res.writeHead(500, {
+    //     //   'Content-Type': 'application/json'
+    //     // });
+    //     // res.end(JSON.stringify({ status: 'error', message: err }));
+    //     // return
+    //   }
+    //   // console.log(files)
+    //   filesList =  files;
+    //   return filesList;
+    // });
     
-            // const newUser = (id)=>{
-            //     newUserId = id
-            //     console.log(newUserId);
-    
-            // }
-    
-            file.mv(filePath, (err) => {
-                if(err){
-                    console.log(err)
-                    res.writeHead(500, {
-                        'Content-Type': 'application/json'
-                    })
-                    res.end(JSON.stringify({ status: 'error', message: err }));
-                    return
-                }
-                res.writeHead(200, {
-                    'Content-Type': 'application/json'        
-                })
-                res.end(JSON.stringify({ status: 'success', path: filePath }))
-            })
-    
-            return newUserId            
-        }, true);
+  //   console.log(filesList)
+  //   next(filesList);
+  // };
+
+  
 
 
 
+
+  app.post('/files', (req, res) => {
+
+      readFile(data => {
+          newUserId = data.members.length;
+          console.log(newUserId);
+          const file = req.files.imageFile;
+          const fileNameArr = file.name.split(".");
+          const fileName = `${newUserId}.${fileNameArr.slice(-1)[0]}`;
+          console.log(fileName, newUserId);
+          const filePath = path.join(__dirname, "../images/" + fileName);
+          console.log(filePath);
+          var newUserId;
+
+          // const newUser = (id)=>{
+          //     newUserId = id
+          //     console.log(newUserId);
+
+          // }
+
+          file.mv(filePath, (err) => {
+              if(err){
+                  console.log(err)
+                  res.writeHead(500, {
+                      'Content-Type': 'application/json'
+                  })
+                  res.end(JSON.stringify({ status: 'error', message: err }));
+                  return
+              }
+              res.writeHead(200, {
+                  'Content-Type': 'application/json'        
+              })
+              res.end(JSON.stringify({ status: 'success', path: filePath }))
+          })
+
+          return newUserId            
+      }, true);
+
+
+
+  });
+
+    //update
+  app.put('/files/:id', (req, res) => {
+    readFile(data => {
+      const userId = req.params["id"];
+      console.log(userId);
+      const file = req.files.imageFile;
+      const fileNameArr = file.name.split(".");
+      const fileName = `${userId}.${fileNameArr.slice(-1)[0]}`;
+      console.log(fileName, userId);
+      const filePath = path.join(__dirname, "../images/" + fileName);
+      console.log(filePath);
+
+      file.mv(filePath, (err) => {
+          if(err){
+              console.log(err)
+              res.writeHead(500, {
+                  'Content-Type': 'application/json'
+              })
+              res.end(JSON.stringify({ status: 'error', message: err }));
+              return
+          }
+          res.writeHead(200, {
+              'Content-Type': 'application/json'        
+          })
+          res.end(JSON.stringify({ status: 'success', path: filePath }))
+      })
+
+      // data.members[userId].img = filePath;
+
+      // writeFile(JSON.stringify(data, null, 2), () => {
+      //   // res.status(200).send(`users id:${userId} updated`);
+      // });  
+
+      return userId            
+    }, true);
+  });
+
+  app.delete('/files/:id', (req, res) => {
+    let fileId = `${req.params.id}`;
+    let dir = "images";
+    
+    fs.readdir(path.join(`${__dirname}/../${dir}`), (err, files) => {
+      if(err){
+        console.log(err);
+        // res.writeHead(500, {
+        //   'Content-Type': 'application/json'
+        // });
+        // res.end(JSON.stringify({ status: 'error', message: err }));
+        // return
+      }
+      console.log(files)
+      let filesString = files.join(" ");
+      
+      console.log(filesString);
+      let regExName = new RegExp(fileId, "i");
+      console.log(regExName);
+
+      let fileName = regExName.exec(filesString),
+        file = fileName.input.substr(fileName.index, 5);
+
+      console.log(file);
+
+      fs.unlink(path.join(`${__dirname}/../${dir}/${file}`), (err) => {
+        if (err){
+          console.log(err)
+          return
+        }
+        res.status(200).send(JSON.stringify(`${file} deleted`))
+      });
+      
     });
 
-      //update
-    app.put('/files/:id', (req, res) => {
-      readFile(data => {
-        const userId = req.params["id"];
-        console.log(userId);
-        const file = req.files.imageFile;
-        const fileNameArr = file.name.split(".");
-        const fileName = `${userId}.${fileNameArr.slice(-1)[0]}`;
-        console.log(fileName, userId);
-        const filePath = path.join(__dirname, "../images/" + fileName);
-        console.log(filePath);
+    
+  });
 
-        file.mv(filePath, (err) => {
-            if(err){
-                console.log(err)
-                res.writeHead(500, {
-                    'Content-Type': 'application/json'
-                })
-                res.end(JSON.stringify({ status: 'error', message: err }));
-                return
-            }
-            res.writeHead(200, {
-                'Content-Type': 'application/json'        
-            })
-            res.end(JSON.stringify({ status: 'success', path: filePath }))
-        })
 
-        // data.members[userId].img = filePath;
-
-        // writeFile(JSON.stringify(data, null, 2), () => {
-        //   // res.status(200).send(`users id:${userId} updated`);
-        // });  
-
-        return userId            
-    }, true);
-});
 
 
 };

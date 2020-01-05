@@ -52,7 +52,7 @@ const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') =
             data.members[newUserId.toString()] = req.body;
             console.log(req.body);
 
-            writeFile(JSON.stringify(data, null, 2), () => {
+            writeFile(JSON.stringify(data, null, 4), () => {
                 res.status(200).send("new user added");
             });
 
@@ -80,8 +80,26 @@ const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') =
       data.members[userId] = req.body
       console.log(req.body, data.members[userId]);
 
-      writeFile(JSON.stringify(data, null, 2), () => {
+      writeFile(JSON.stringify(data, null, 4), () => {
         res.status(200).send(`users id:${userId} updated`);
+      });
+
+    }, 
+      true);
+  });
+
+  //delete
+  app.delete('/users/:id', (req, res) => {
+    readFile(data => {
+
+      //add the user
+      const userId = req.params["id"];
+      // delete data.members[userId]
+      data.members.splice(userId, 1);
+      console.log(data.members);
+
+      writeFile(JSON.stringify(data, null, 4), () => {
+        res.status(200).send(`users id:${userId} deleted`);
       });
 
     }, 

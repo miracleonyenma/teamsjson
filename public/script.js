@@ -1,3 +1,4 @@
+
 // IIFE
 // Immediately Invoked Function Expressions
 
@@ -38,6 +39,7 @@
     }
 */
     var usersData = {},
+        renderedDeleteBtns = {},
         renderedUserbtns = {},
         filePath;
 
@@ -71,7 +73,7 @@
 
         //error handler
         const handleErr = (err) => {
-            console.log(err);
+            console.error(err);
         } 
 
         //set the download link
@@ -80,6 +82,9 @@
 
 
         const memberBtnFunc = (users, membersPresent)=>{
+            var submitBtn = document.querySelector("#submit");
+            var deleteBtn = document.querySelector("#delete");
+
             if(membersPresent){
                 for(let i = 0; i < renderedUserbtns.length; i++){
                     renderedUserbtns[i].addEventListener("click", function(e){
@@ -97,125 +102,80 @@
                         
                         submitAction = {status: "UPDATE", id : id};
                         console.log(submitBtn.value);        
-        
+                        submitBtn.value = (`${submitAction.status} User`).toLowerCase();
+
                     });
-    
+                    renderedDeleteBtns.forEach(item => {
+                        item.addEventListener("click", function(e){
+                            const id = e.target.getAttribute("data-id");
+                            console.log(e.target);
+                            
+                            submitAction = {status: "DELETE", id : id};
+                            submitBtn.value = (`${submitAction.status} User`).toLowerCase();
+                            console.log(submitAction);
+                        });
+                    });
+
                     console.log(submitBtn.value);
                     submitBtn.value = (`${submitAction.status} User`).toLowerCase();
     
                 }    
-    
             }
         }
 
-                //get the users
-                const getMembers = (url, element, membersPresent)=>{
-                    fetch(url)
-                    .then( res => {
-                        return res.json()
-                    })
-                    .then( data => {
-                        console.log(membersPresent, data);
-                        membersPresent ? usersData = data.members : usersData = data
-                        populateElement();
-                        return usersData
-                    })
-                    .catch( err => handleErr(err));
-        
-                    console.log(usersData, usersData.length, element.children);
-        
-                    const populateElement = () => {
-                        if(usersData.length !== undefined){
-
-                            while(submitCont.firstElementChild){
-                                submitCont.removeChild(submitCont.firstElementChild);
-                            }
-
-                            let createdSubmitBtn = document.createElement("input");
-                            var deleteBtn = document.createElement("button");
-                            deleteBtn.innerText = "Delete";
-
-                            setAttributes(createdSubmitBtn, {"id" : "submit", "class" : "buttons", "type" : "submit", "value" : "submit"});
-                            setAttributes(deleteBtn, {"id" : "delete", "class" : "buttons", "type" : "submit"});
-
-                            submitCont.appendChild(createdSubmitBtn);
-                            submitCont.appendChild(deleteBtn);
-        
-                            while(element.firstElementChild){
-                                element.removeChild(element.firstElementChild);
-                            }
-                            for(let i = 0; i < usersData.length; i++){
-            
-                                var userSect = document.createElement("li");
-                                var userLink = document.createElement("a");
-                                var userBtn = document.createElement("button");
-                                membersPresent ? userBtn.innerText = usersData[i].name : userBtn.innerText = usersData[i]
-                                
-                                element.appendChild(userSect);
-                                userSect.appendChild(userLink);
-                                userLink.appendChild(userBtn);
-                                
-                                membersPresent ? setAttributes(userLink, {"data-id" : i}) : setAttributes(userLink, {"href" : `${downloadUrl}/${usersData[i]}`})
-                                setAttributes(userBtn, {"data-id" : i});
-                            }
-                            renderedUserbtns = element.querySelectorAll("li button");
-                            memberBtnFunc(usersData, membersPresent);
-                            console.log(renderedUserbtns)
-                        }
-            
-                    }
-        
-                };
-        
-        
-
-        const updateUser = (e, formFiles, formData, id)=>{
-            e.preventDefault();            
-            fetch(`${filesUrl}/${id}`, {
-                method: 'PUT',
-                body: formFiles
-            })
-            .then(res => {
+        //get the users
+        const getMembers = (url, element, membersPresent)=>{
+            fetch(url)
+            .then( res => {
                 return res.json()
             })
-            .then(data => {
-                console.log(data);
-                getPath(data.path);
-                return data.path
+            .then( data => {
+                console.log(membersPresent, data);
+                membersPresent ? usersData = data.members : usersData = data
+                populateElement();
+                return usersData
             })
-            .catch(err => handleErr(err))
+            .catch( err => handleErr(err));
 
-            const getPath = (path)=>{
+            console.log(usersData, usersData.length, element.children);
 
-                filePath = path;       
-                console.log(filePath);
+            const populateElement = () => {
+                if(usersData.length !== undefined){
 
-                fetch(`${usersUrl}/${id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type' : 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name : formData.name,
-                        role : formData.role,
-                        company : formData.company,
-                        bio : formData.bio,
-                        img : filePath,
-                        social : formData.social,
-                        icons: formData.icons
-                    })
-                })
-                .then(res => {
-                    res.ok ? console.log("SUCCESS") : console.log("ERROR");
-                    return res.json();
-                })
-                .then(data => {
-                    console.log(data);
-                })
-                .catch(err =>handleErr(err));
+                    while(element.firstElementChild){
+                        element.removeChild(element.firstElementChild);
+                    }
+                    for(let i = 0; i < usersData.length; i++){
+    
+                        var userSect = document.createElement("li");
+                        var userLink = document.createElement("a");
+                        var userBtn = document.createElement("button");
+                        var deleteBtn = document.createElement("button");
+                        var deleteBtnSpan = document.createElement("span");
+                        deleteBtnSpan.innerHTML = "&#x2715";
+                        deleteBtn.appendChild(deleteBtnSpan);
+        
+                        membersPresent ? userBtn.innerText = usersData[i].name : userBtn.innerText = usersData[i]
+                        
+                        element.appendChild(userSect);
+                        userSect.appendChild(userLink);
+                        userLink.appendChild(userBtn);
+                        if(membersPresent) {
+                            userSect.appendChild(deleteBtn);
+                            setAttributes(deleteBtn, {"class" : "delete" , "data-id" : i});
+                        }
+                        membersPresent ? setAttributes(userLink, {"data-id" : i}) : setAttributes(userLink, {"href" : `${downloadUrl}/${usersData[i]}`})
+                        setAttributes(userBtn, {"data-id" : i});
+                    }
+                    renderedUserbtns = element.querySelectorAll("li a button");
+                    renderedDeleteBtns = element.querySelectorAll("li button.delete");
+                    memberBtnFunc(usersData, membersPresent);
+                    console.log(renderedUserbtns)
+                }
+    
             }
-        }
 
+        };
 
         const createUser = (e, formFiles, formData)=>{
             e.preventDefault();
@@ -267,7 +227,102 @@
             }
     
         };
+        
 
+        const updateUser = (e, formFiles, formData, id)=>{
+            e.preventDefault();            
+            fetch(`${filesUrl}/${id}`, {
+                method: 'PUT',
+                body: formFiles
+            })
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                console.log(data);
+                getPath(data.path);
+                return data.path
+            })
+            .catch(err => handleErr(err))
+
+            const getPath = (path)=>{
+
+                filePath = path;       
+                console.log(filePath);
+
+                fetch(`${usersUrl}/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name : formData.name,
+                        role : formData.role,
+                        company : formData.company,
+                        bio : formData.bio,
+                        img : filePath,
+                        social : formData.social,
+                        icons: formData.icons
+                    })
+                })
+                .then(res => {
+                    res.ok ? console.log("SUCCESS") : console.log("ERROR");
+                    return res.json();
+                })
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(err =>handleErr(err));
+            }
+        }
+
+        const deleteUser = (e, formFiles, formData, id) => {
+            e.preventDefault();  
+            console.log("deleting");
+
+            fetch(`${usersUrl}/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type' : 'application/json'
+                }
+                // body: JSON.stringify({
+                //     name : formData.name,
+                //     role : formData.role,
+                //     company : formData.company,
+                //     bio : formData.bio,
+                //     img : filePath,
+                //     social : formData.social,
+                //     icons: formData.icons
+                // })
+            })
+            .then(res => {
+                res.ok ? console.log("SUCCESS") : console.log("ERROR");
+                return res.json();
+            })
+            .then(data => {
+                console.log(data);
+                deleteFile(id);
+            })
+            .catch(err =>handleErr(err));
+            
+            const deleteFile = (id)=>{
+                console.log("runnu")
+                fetch(`${filesUrl}/${id}`, {
+                    method: 'DELETE',
+                })
+                .then(res => {
+                    return res.json()
+                })
+                .then(data => {
+                    console.log(data);
+                    // getPath(data.path);
+                    // return data.path
+                })
+                .catch(err => handleErr(err))
+
+            }
+
+        }
 
         imageFile.addEventListener("change", function(e){
             fakeBtn.querySelector("span").innerText = imageFile.files[0].name;
@@ -304,8 +359,9 @@
                 createUser(e, formFiles, formData);
             }else if(submitAction.status == "UPDATE"){
                 updateUser(e, formFiles, formData, submitAction.id);
-            }else{
+            }else if(submitAction.status == "DELETE"){
                 deleteUser(e, formFiles, formData, submitAction.id);
+                alert("deleting")
             }
         });
         refreshBtn.addEventListener('click', ()=> getMembers(usersUrl, usersCont, true));

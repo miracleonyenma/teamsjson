@@ -246,7 +246,6 @@ form {
 }
 
 .action-btn {
-  margin: auto;
   display: block;
   margin: 1em auto;
   background: var(--background-submit);
@@ -313,6 +312,7 @@ form {
   height: 100%;
   outline: none;
   padding: 0.65em 0.25em;
+  text-align: center;
   border-radius: 6px;
 }
 
@@ -340,19 +340,69 @@ form {
   background: var(--background-content);
   border: 2px solid var(--border-content);
   border-bottom-style: none;
+  position: relative;
 }
 
-.cont div.output-cont ul li:nth-of-type(1), .cont div.output-cont ul li:nth-of-type(1) button {
+.cont div.output-cont ul li:hover button.delete, .cont div.output-cont ul li:focus button.delete {
+  -webkit-transform: translate(150%, -50%) rotateZ(360deg);
+          transform: translate(150%, -50%) rotateZ(360deg);
+}
+
+.cont div.output-cont ul li > button.delete {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 70%;
+  -webkit-transform: translate(0%, -50%) rotateZ(0deg);
+          transform: translate(0%, -50%) rotateZ(0deg);
+  background: var(--background-submit);
+  border: 1px solid var(--border-content);
+  color: var(--text);
+  border-radius: 60px;
+  height: 30px;
+  cursor: pointer;
+  width: 30px;
+  /* display: -webkit-box; */
+  /* display: flex; */
+  /* text-align: center; */
+  /* -webkit-box-align: center; */
+  /* align-items: center; */
+  /* -webkit-box-pack: center; */
+  /* justify-content: center; */
+}
+
+.cont div.output-cont ul li > button.delete span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cont div.output-cont ul li > button.delete:hover, .cont div.output-cont ul li > button.delete:focus {
+  background: var(--background-submit-variant);
+}
+
+.cont div.output-cont ul li > button.delete:active {
+  background: var(--background-submit-variant);
+  -webkit-transform: translate(150%, -45%) rotateZ(0deg);
+          transform: translate(150%, -45%) rotateZ(0deg);
+}
+
+.cont div.output-cont ul li:nth-of-type(1), .cont div.output-cont ul li:nth-of-type(1) a button {
   border-radius: 6px 6px 0 0;
 }
 
-.cont div.output-cont ul li:nth-last-of-type(1), .cont div.output-cont ul li:nth-last-of-type(1) button {
+.cont div.output-cont ul li:nth-last-of-type(1), .cont div.output-cont ul li:nth-last-of-type(1) a button {
   border-radius: 0 0 6px 6px;
   border-bottom-style: solid;
 }
 
 .cont div.output-cont ul li a {
   cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
 .cont div.output-cont ul li button {
