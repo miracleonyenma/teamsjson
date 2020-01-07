@@ -294,9 +294,10 @@ form {
   padding: 0.65em 0.25em;
 }
 
-.submit-cont button#delete {
-  padding: 0 1.25em;
-  margin: 0 0 0 1em;
+.submit-cont button#reset {
+  font-size: 1.15em;
+  padding: 0 0.75em;
+  margin: 0 0 0 0.75em;
 }
 
 .output-cont {
@@ -343,12 +344,19 @@ form {
   position: relative;
 }
 
-.cont div.output-cont ul li:hover button.delete, .cont div.output-cont ul li:focus button.delete {
+.cont div.output-cont ul li a {
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  display: block;
+}
+
+.cont div.output-cont ul li a:focus + button.delete, .cont div.output-cont ul li a:hover + button.delete {
   -webkit-transform: translate(150%, -50%) rotateZ(360deg);
           transform: translate(150%, -50%) rotateZ(360deg);
 }
 
-.cont div.output-cont ul li > button.delete {
+.cont div.output-cont ul li button.delete {
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -371,7 +379,7 @@ form {
   /* justify-content: center; */
 }
 
-.cont div.output-cont ul li > button.delete span {
+.cont div.output-cont ul li button.delete span {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -380,11 +388,11 @@ form {
   pointer-events: none;
 }
 
-.cont div.output-cont ul li > button.delete:hover, .cont div.output-cont ul li > button.delete:focus {
+.cont div.output-cont ul li button.delete:hover, .cont div.output-cont ul li button.delete:focus {
   background: var(--background-submit-variant);
 }
 
-.cont div.output-cont ul li > button.delete:active {
+.cont div.output-cont ul li button.delete:active {
   background: var(--background-submit-variant);
   -webkit-transform: translate(150%, -45%) rotateZ(0deg);
           transform: translate(150%, -45%) rotateZ(0deg);
@@ -397,12 +405,6 @@ form {
 .cont div.output-cont ul li:nth-last-of-type(1), .cont div.output-cont ul li:nth-last-of-type(1) a button {
   border-radius: 0 0 6px 6px;
   border-bottom-style: solid;
-}
-
-.cont div.output-cont ul li a {
-  cursor: pointer;
-  position: relative;
-  z-index: 2;
 }
 
 .cont div.output-cont ul li button {

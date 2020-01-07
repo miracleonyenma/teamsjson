@@ -1,18 +1,19 @@
 {
-    "teamName": "Alphas",
-    "website": "https://alphasteam.netlify.com",
-    "members": [
+    "teamName" : "Alphas",
+    "website" : "https://alphasteam.netlify.com",
+
+    "members" : [
         {
             "name": "Miracle Onyenma",
             "role": "Web Developer",
-            "company": "Alphas",
-            "bio": "I'm a Designer, developer, tech lover and code junkie",
-            "img": "./img/IMG_20190108_163639edit.jpg",
-            "social": [
+            "company" : "Alphas",
+            "bio" : "I'm a Designer, developer, tech lover and code junkie",
+            "img" : "./img/laptopcode.jpg",
+            "social" : [
                 "https://twitter.com/miracleio",
                 "https://github.com/miracleonyenma"
             ],
-            "icons": [
+            "icons" : [
                 "fa fa-twitter",
                 "fa fa-github"
             ]
@@ -20,29 +21,29 @@
         {
             "name": "Primidac",
             "role": "Cryptographer",
-            "company": "Hiroutes Digital",
-            "bio": "Something",
-            "img": "1240x600.png",
-            "social": [
+            "company" : "Hiroutes Digital",
+            "bio" : "I'm a Designer, developer, tech lover and code junkie",
+            "img" : "./img/primidac.png",
+            "social" : [
                 "https://twitter.com/miracleio",
                 "https://github.com/miracleonyenma"
             ],
-            "icons": [
+            "icons" : [
                 "fa fa-twitter",
                 "fa fa-github"
             ]
         },
         {
             "name": "Koder King",
-            "role": "Software Developer",
-            "company": "Alphas",
-            "bio": "I'm a Designer, developer, tech lover and code junkie",
-            "img": "C:\\Users\\Mi\\Documents\\october\\teamsjson\\images\\2.PNG",
-            "social": [
+            "role": "Artificial Intelligence",
+            "company" : "Alphas",
+            "bio" : "I love code, Music and Hacking",
+            "img" : "./img/Screenshot_20191129-210929_1575293498941.jpg",
+            "social" : [
                 "https://twitter.com/miracleio",
-                "https://github.com/miracleonyenma"
+                "https://github.com/johnson-andy"
             ],
-            "icons": [
+            "icons" : [
                 "fa fa-twitter",
                 "fa fa-github"
             ]
@@ -50,45 +51,32 @@
         {
             "name": "Victory Tuduo",
             "role": "Software Developer",
-            "company": "Alphas",
-            "bio": "I'm a Developer(full stack),love coding and stuffs like that ",
-            "img": "C:\\Users\\Mi\\Documents\\october\\teamsjson\\images\\3.PNG",
-            "social": [
+            "company" : "Alphas",
+            "bio" : "I'm a Developer(full stack),love coding and stuffs like that ",
+            "img" : "./img/vic.jpg",
+            "social" : [
                 "https://facebook.com/Tuduo Victory",
                 "https://github.com/Victory-ET"
             ],
-            "icons": [
+            "icons" : [
                 "fa fa-facebook",
                 "fa fa-github"
             ]
         },
+            
         {
             "name": "Emmanuel Uche",
             "role": "Front-End developer and cyber-Security personnel",
-            "company": "Alphas",
-            "bio": "I'm a web-developer (front-end) and cyber-security person who loves coding and gets tired easily when coding",
-            "img": "C:\\Users\\Mi\\Documents\\october\\teamsjson\\images\\4.PNG",
-            "social": [
-                "https://facebook.com/Uc Emma",
+            "company" : "Alphas",
+            "bio" : "I'm a web-developer (front-end) and cyber-security person who loves coding and gets tired easily when coding",
+            "img" : "",
+            "social" : [
+                
+                "https://facebook.com/computeralphas",
                 "https://github.com/Uc-Hub"
             ],
-            "icons": [
+            "icons" : [
                 "fa fa-facebook",
-                "fa fa-github"
-            ]
-        },
-        {
-            "name": "Koder King",
-            "role": "Software Developer",
-            "company": "Alphas",
-            "bio": "I'm a Designer, developer, tech lover and code junkie",
-            "img": "C:\\Users\\Mi\\Documents\\october\\teamsjson\\images\\6.png",
-            "social": [
-                "https://twitter.com/miracleio",
-                "https://github.com/miracleonyenma"
-            ],
-            "icons": [
-                "fa fa-twitter",
                 "fa fa-github"
             ]
         }

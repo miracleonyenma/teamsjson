@@ -298,9 +298,10 @@ form{
 
     }
 
-    button#delete{
-        padding: 0 1.25em;
-        margin: 0 0 0 1em;
+    button#reset{
+        font-size: 1.15em;
+        padding: 0 0.75em;
+        margin: 0 0 0 0.75em;
 
     }
 
@@ -346,11 +347,22 @@ form{
                 border-bottom-style: none;
                 position: relative;
 
-                &:focus button.delete, &:hover button.delete{
-                    transform: translate(150%, -50%) rotateZ(360deg);
+                // &:focus button.delete, &:hover button.delete{
+                //     transform: translate(150%, -50%) rotateZ(360deg);
+                // }
+
+                a{
+                    cursor: pointer;
+                    position: relative;
+                    z-index: 2;
+                    display: block;
+
+                    &:focus + button.delete, &:hover + button.delete{
+                        transform: translate(150%, -50%) rotateZ(360deg);
+                    }
                 }
 
-                & > button.delete{
+                button.delete{
                     position: absolute;
                     z-index: 1;
                     top: 50%;
@@ -399,11 +411,6 @@ form{
                 &:nth-last-of-type(1), &:nth-last-of-type(1) a button{
                     border-radius: 0 0 6px 6px;
                     border-bottom-style: solid;
-                }
-                a{
-                    cursor: pointer;
-                    position: relative;
-                    z-index: 2;
                 }
                 button{
                     width: 100%;

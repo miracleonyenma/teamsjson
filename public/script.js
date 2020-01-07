@@ -61,8 +61,11 @@
             downloadCont = document.querySelector("#download-disp ul"),
             refreshBtn = document.querySelector("#refresh"),
             downloadBtn = document.querySelector("#download"),
-            submitAction = {status : "CREATE", id : ""};
+            submitAction = {status : "CREATE", id : ""},
+            resetBtn = document.querySelector("#reset"),
+            submitBtn = document.querySelector("#submit")
         ;
+        
 
         //set attribute helper function
         const setAttributes = (el, attrs)=>{
@@ -82,7 +85,6 @@
 
 
         const memberBtnFunc = (users, membersPresent)=>{
-            var submitBtn = document.querySelector("#submit");
             var deleteBtn = document.querySelector("#delete");
 
             if(membersPresent){
@@ -217,7 +219,8 @@
                 })
                 .then(res => {
                     res.ok ? console.log("SUCCESS") : console.log("ERROR");
-                    return res.json();
+                    console.log(res)
+                    return res.text();
                 })
                 .then(data => {
                     console.log(data);
@@ -366,7 +369,10 @@
         });
         refreshBtn.addEventListener('click', ()=> getMembers(usersUrl, usersCont, true));
         downloadBtn.addEventListener('click', ()=> getMembers(downloadUrl, downloadCont, false));
-
+        resetBtn.addEventListener('click', ()=>{
+            submitAction = {status : "CREATE", id : ""};
+            submitBtn.value = (`${submitAction.status} User`).toLowerCase();
+        })
     });
 
 
