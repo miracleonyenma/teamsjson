@@ -347,9 +347,9 @@ form{
                 border-bottom-style: none;
                 position: relative;
 
-                // &:focus button.delete, &:hover button.delete{
-                //     transform: translate(150%, -50%) rotateZ(360deg);
-                // }
+                &:focus button.delete, &:hover button.delete{
+                    transform: translate(150%, -50%) rotateZ(360deg);
+                }
 
                 a{
                     cursor: pointer;

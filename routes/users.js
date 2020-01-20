@@ -81,7 +81,7 @@ const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') =
       console.log(req.body, data.members[userId]);
 
       writeFile(JSON.stringify(data, null, 4), () => {
-        res.status(200).send(`users id:${userId} updated`);
+        res.status(200).send(JSON.stringify(`user id: ${userId} updated`));
       });
 
     }, 

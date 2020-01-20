@@ -344,6 +344,11 @@ form {
   position: relative;
 }
 
+.cont div.output-cont ul li:focus button.delete, .cont div.output-cont ul li:hover button.delete {
+  -webkit-transform: translate(150%, -50%) rotateZ(360deg);
+          transform: translate(150%, -50%) rotateZ(360deg);
+}
+
 .cont div.output-cont ul li a {
   cursor: pointer;
   position: relative;
