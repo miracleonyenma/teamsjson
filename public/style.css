@@ -2,6 +2,7 @@
   --background: #212531;
   --background-content: #282b36;
   --background-submit: #3b5ac9;
+  --background-err: #c93b66;
   --background-submit-variant: #4c68ca;
   --border-content: rgba(255, 255, 255, 0.171);
   --text: #eee;
@@ -424,6 +425,60 @@ form {
 
 .cont div.output-cont ul li button:hover, .cont div.output-cont ul li button:active, .cont div.output-cont ul li button:focus {
   background: var(--background-content);
+}
+
+#alerts-cont {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+}
+
+#alerts-cont ul {
+  position: relative;
+  direction: rtl;
+}
+
+#alerts-cont ul li {
+  direction: ltr;
+  position: relative;
+  margin: 10% 0;
+  padding: 0.65em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 6px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: var(--background-err);
+}
+
+#alerts-cont ul li.info {
+  background: var(--background-submit);
+}
+
+#alerts-cont ul li button {
+  position: relative;
+  color: var(--background);
+  border-radius: 60px;
+  height: 30px;
+  cursor: pointer;
+  width: 30px;
+  background: var(--text);
+  margin: 0 0 0 0.85em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
 }
 
 @media screen and (min-width: 680px) {

@@ -64,7 +64,8 @@
             downloadBtn = document.querySelector("#download"),
             submitAction = {status : "CREATE", id : ""},
             resetBtn = document.querySelector("#reset"),
-            submitBtn = document.querySelector("#submit")
+            submitBtn = document.querySelector("#submit"),
+            alertsCont = document.querySelector("#alerts-cont ul")
         ;
         
 
@@ -78,6 +79,18 @@
         //error handler
         const handleErr = (err) => {
             console.error(err);
+            const alert = document.createElement("li");
+            const alertText = document.createElement("p");
+            const alertBtn = document.createElement("button");
+            alertText.textContent = err;
+            alertBtn.innerHTML = "&#x2715";
+            alert.appendChild(alertText);
+            alert.appendChild(alertBtn);
+            alertsCont.appendChild(alert);
+
+            alertBtn.addEventListener("click", ()=>{
+                alert.style.display = "none";
+            })
         } 
 
         //set the download link

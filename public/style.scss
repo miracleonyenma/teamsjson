@@ -2,6 +2,7 @@
     --background: #212531;
     --background-content: #282b36;
     --background-submit: #3b5ac9;
+    --background-err: #c93b66;
     --background-submit-variant: #4c68ca;
     --border-content: rgba(255, 255, 255, 0.171);
     --text: #eee;
@@ -446,6 +447,50 @@ form{
     // border: 2px solid var(--border-content);
 
 
+}
+
+#alerts-cont{
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+
+    ul{
+        position: relative;
+        direction: rtl;
+
+        li{
+            direction: ltr;
+            position: relative;
+            margin: 10% 0;
+            padding: 0.65em;
+            display: flex;
+            align-items: center;
+            border-radius: 6px;
+            width: fit-content;
+
+            // &.error{
+                background: var(--background-err);
+            // }
+            &.info{
+                background: var(--background-submit);
+            }
+
+            button{
+                position: relative;
+                color: var(--background);
+                border-radius: 60px;
+                height: 30px;
+                cursor: pointer;
+                width: 30px;
+                background: var(--text);
+                margin: 0 0 0 0.85em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 680px){
