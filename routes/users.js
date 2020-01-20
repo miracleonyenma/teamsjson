@@ -99,7 +99,7 @@ const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') =
       console.log(data.members);
 
       writeFile(JSON.stringify(data, null, 4), () => {
-        res.status(200).send(`users id:${userId} deleted`);
+        res.status(200).send(JSON.stringify(`users id:${userId} deleted`));
       });
 
     }, 
