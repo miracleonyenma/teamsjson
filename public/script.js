@@ -43,9 +43,9 @@
         renderedUserbtns = {},
         filePath;
 
-    const usersUrl = "http://localhost:3001/users",
-        filesUrl = "http://localhost:3001/files",
-        downloadUrl = "http://localhost:3001/download"
+    const usersUrl = "https://teamjson.herokuapp.com/users",
+        filesUrl = "https://teamjson.herokuapp.com/files",
+        downloadUrl = "https://teamjson.herokuapp.com/download"
         ;
 
         //https://teamjson.herokuapp.com
