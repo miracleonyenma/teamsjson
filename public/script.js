@@ -77,9 +77,10 @@
         }
 
         //error handler
-        const handleErr = (err) => {
+        const handleErr = (err, status) => {
             console.error(err);
             const alert = document.createElement("li");
+            if(status <= 200) alert.classList.add("info");
             const alertText = document.createElement("p");
             const alertBtn = document.createElement("button");
             alertText.textContent = err;
@@ -87,9 +88,20 @@
             alert.appendChild(alertText);
             alert.appendChild(alertBtn);
             alertsCont.appendChild(alert);
+            setTimeout(()=>{
+                alert.style.transform = "translateY(0) scale(1)";
+            }, 100);
+
+
 
             alertBtn.addEventListener("click", ()=>{
-                alert.style.display = "none";
+                alert.style.transform = "translate(100%) scale(0)";
+                // setTimeout(()=>{
+                //     alert.style.display = "none";
+                // }, 100);    
+                alert.ontransitionend = ()=>{
+                    alert.style.display = "none"; 
+                }
             })
         } 
 
@@ -205,9 +217,8 @@
                 return res.json()
             })
             .then(data => {
-                if(data.status != null){
-                    handleErr(data.message)
-                }
+                (data.status == "success") ? handleErr(`${data.status} : ${data.message}`, 200) : handleErr(`${data.status} : ${data.message}`);
+
                 console.log(data.path);
                 getPath(data.path);
                 return data.path
@@ -235,9 +246,10 @@
                     })
                 })
                 .then(res => {
-                    res.ok ? console.log("SUCCESS") : console.log("ERROR");
+                    // res.ok ? handleErr("SUCCESS", 200) : handleErr("ERROR");
+                    
                     console.log(res)
-                    return res.text();
+                    return res.json();
                 })
                 .then(data => {
                     console.log(data);
@@ -256,9 +268,11 @@
                 body: formFiles
             })
             .then(res => {
+                // res.ok ? handleErr("SUCCESS", 200) : handleErr("ERROR");
                 return res.json()
             })
             .then(data => {
+                (data.status == "success") ? handleErr(`${data.status} : ${data.message}`, 200) : handleErr(`${data.status} : ${data.message}`);
                 console.log(data);
                 getPath(data.path);
                 return data.path
@@ -286,10 +300,13 @@
                     })
                 })
                 .then(res => {
-                    res.ok ? console.log("SUCCESS") : console.log("ERROR");
+                    // res.ok ? console.log("SUCCESS") : console.log("ERROR");
+                    // res.ok ? handleErr("SUCCESS", 200) : handleErr("ERROR");
+
                     return res.json();
                 })
                 .then(data => {
+                    (data.status == "success") ? handleErr(`${data.status} : ${data.message}`, 200) : handleErr(`${data.status} : ${data.message}`);
                     console.log(data);
                 })
                 .catch(err =>handleErr(err));
@@ -320,7 +337,8 @@
                 return res.json();
             })
             .then(data => {
-                console.log(data);
+                // console.log(data);
+                (data.status == "success") ? handleErr(`${data.status} : ${data.message}`, 200) : handleErr(`${data.status} : ${data.message}`);
                 deleteFile(id);
             })
             .catch(err =>handleErr(err));

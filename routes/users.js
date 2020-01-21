@@ -53,7 +53,7 @@ const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') =
             console.log(req.body);
 
             writeFile(JSON.stringify(data, null, 4), () => {
-                res.status(200).send("new user added");
+                res.status(200).send({status : "success", message : "new user added"});
             });
 
         },
@@ -81,7 +81,7 @@ const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') =
       console.log(req.body, data.members[userId]);
 
       writeFile(JSON.stringify(data, null, 4), () => {
-        res.status(200).send(JSON.stringify(`user id: ${userId} updated`));
+        res.status(200).send(JSON.stringify({status : "success", message : `user id: ${userId} updated`}));
       });
 
     }, 
@@ -99,7 +99,7 @@ const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') =
       console.log(data.members);
 
       writeFile(JSON.stringify(data, null, 4), () => {
-        res.status(200).send(JSON.stringify(`users id:${userId} deleted`));
+        res.status(200).send(JSON.stringify({status : "success", message : `users id:${userId} deleted`}));
       });
 
     }, 

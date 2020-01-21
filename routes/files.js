@@ -103,7 +103,7 @@ const fileRoutes = (app, fs) =>{
                 res.writeHead(200, {
                     'Content-Type': 'application/json'        
                 })
-                res.end(JSON.stringify({ status: 'success', path: filePath }))
+                res.end(JSON.stringify({ status: 'success', message : 'file added successfully', path: filePath }))
             })
   
             return newUserId            
@@ -151,7 +151,7 @@ const fileRoutes = (app, fs) =>{
             res.writeHead(200, {
                 'Content-Type': 'application/json'        
             })
-            res.end(JSON.stringify({ status: 'success', path: filePath }))
+            res.end(JSON.stringify({ status: 'success', message : 'file added successfully', path: filePath }))
         })
 
         // data.members[userId].img = filePath;
@@ -198,7 +198,7 @@ const fileRoutes = (app, fs) =>{
           console.log(err)
           return
         }
-        res.status(200).send(JSON.stringify(`${file} deleted`))
+        res.status(200).send(JSON.stringify({status : "success", message: `${file} deleted`}))
       });
       
     });

@@ -431,6 +431,7 @@ form {
   position: fixed;
   bottom: 5%;
   right: 5%;
+  z-index: 2;
 }
 
 #alerts-cont ul {
@@ -453,6 +454,10 @@ form {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-transition: all 0.32s ease-in;
+  transition: all 0.32s ease-in;
+  -webkit-transform: translateY(100%) scale(0);
+          transform: translateY(100%) scale(0);
   background: var(--background-err);
 }
 

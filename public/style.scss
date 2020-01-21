@@ -453,6 +453,7 @@ form{
     position: fixed;
     bottom: 5%;
     right: 5%;
+    z-index: 2;
 
     ul{
         position: relative;
@@ -467,6 +468,8 @@ form{
             align-items: center;
             border-radius: 6px;
             width: fit-content;
+            transition: all 0.32s ease-in;
+            transform: translateY(100%) scale(0);
 
             // &.error{
                 background: var(--background-err);
