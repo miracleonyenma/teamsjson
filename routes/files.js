@@ -17,6 +17,7 @@ const fileRoutes = (app, fs) =>{
           handleErr(err);
         };
 
+        
         callback(returnJson ? JSON.parse(data) : data);
       });
     };
